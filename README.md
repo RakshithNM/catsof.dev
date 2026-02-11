@@ -22,7 +22,7 @@ npm run dev:site
 ## Airtable setup
 
 1. Create a new Airtable base.
-2. Create a table named `Cats` (or use any name and set `AIRTABLE_TABLE_NAME`).
+2. Create a table (or use any name and set `AIRTABLE_TABLE_NAME`).
 3. Add these fields (exact names):
    - `Cat Name` (single line text)
    - `Human Name` (single line text)
