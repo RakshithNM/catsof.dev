@@ -37,8 +37,8 @@ npm run dev:site
 6. Set environment variables in local `.env` and in Netlify:
    - `AIRTABLE_TOKEN`
    - `AIRTABLE_BASE_ID`
-   - `AIRTABLE_TABLE_NAME` (default is `Cats`)
-   - `AIRTABLE_VIEW` (default is `Approved`)
+   - `AIRTABLE_TABLE_NAME`
+   - `AIRTABLE_VIEW`
 
 ## Cloudinary setup
 
@@ -50,7 +50,7 @@ npm run dev:site
    - `CLOUDINARY_CLOUD_NAME`
    - `CLOUDINARY_API_KEY`
    - `CLOUDINARY_API_SECRET`
-   - `CLOUDINARY_FOLDER` (optional, defaults to `catsof-dev`)
+   - `CLOUDINARY_FOLDER`
 
 ## How it works
 
