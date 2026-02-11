@@ -22,55 +22,31 @@ npm run dev:site
 ## Airtable setup
 
 1. Create a new Airtable base.
-2. Create a table (or use any name and set `AIRTABLE_TABLE_NAME`).
-3. Add these fields (exact names):
-   - `Cat Name` (single line text)
-   - `Human Name` (single line text)
-   - `Developer URL` (url)
-   - `Photo URL` (url)
-   - `Story` (long text)
-   - `Status` (single select)
-4. Create a view, filtered to `Status`.
+2. Create a table for submissions.
+3. Add fields for cat details, owner details, image URL, story text, and moderation status.
+4. Create an approved-only view for published entries.
 5. Create a Personal Access Token in Airtable:
-   - Scopes: `data.records:read`, `data.records:write`
-   - Base access: your new base
-6. Set environment variables in local `.env` and in Netlify:
-   - `AIRTABLE_TOKEN`
-   - `AIRTABLE_BASE_ID`
-   - `AIRTABLE_TABLE_NAME`
-   - `AIRTABLE_VIEW`
+   - Grant read/write access to records in your base.
+6. Set the required Airtable credentials/configuration in local environment and in Netlify.
 
 ## Cloudinary setup
 
-1. Create a Cloudinary account and copy these values from your dashboard/API settings:
-   - `CLOUDINARY_CLOUD_NAME`
-   - `CLOUDINARY_API_KEY`
-   - `CLOUDINARY_API_SECRET`
-2. Set these environment variables in local `.env` and in Netlify:
-   - `CLOUDINARY_CLOUD_NAME`
-   - `CLOUDINARY_API_KEY`
-   - `CLOUDINARY_API_SECRET`
-   - `CLOUDINARY_FOLDER`
+1. Create a Cloudinary account and collect the required API credentials.
+2. Set the required Cloudinary credentials/configuration in local environment and in Netlify.
 
 ## How it works
 
 - Homepage reads approved records from Airtable at build time (`src/_data/cats.js`).
 - `/submit/` posts to `/api/submit`.
 - Netlify redirects `/api/submit` to `netlify/functions/submit-cat.js`.
-- Submit accepts either a direct file upload (`photoFile`) or an external URL (`photoUrl`).
-- The function validates the input image, uploads it to Cloudinary, and stores only the Cloudinary `secure_url` in Airtable (`Photo URL`).
-- Function writes submissions as `Status = Pending`.
-- After you mark a record as `Approved`, rebuild/redeploy and it appears on `/`.
+- Submit accepts either a direct file upload or an external URL.
+- The function validates the input image, uploads it to Cloudinary, and stores the hosted URL in Airtable.
+- Function writes submissions as pending first.
+- After you approve a record, rebuild/redeploy and it appears on `/`.
 
 ## Troubleshooting
 
-- `Airtable read failed: NOT_FOUND`:
-  - `AIRTABLE_BASE_ID` is wrong, or
-  - `AIRTABLE_TABLE_NAME` does not exactly match table name, or
-  - your Airtable token does not have access to that base.
-- `Could not save submission ...`:
-  - same checks as above, plus verify the required fields exist with exact names.
-- `Missing Cloudinary configuration.`:
-  - set `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, and `CLOUDINARY_API_SECRET` in both local and Netlify env.
-- `Image upload to Cloudinary failed.`:
-  - verify Cloudinary credentials and that the account can accept uploads.
+- If Airtable read/write fails:
+  - verify table/view setup, field names, and token permissions.
+- If Cloudinary upload fails:
+  - verify API credentials and account permissions.
