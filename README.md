@@ -30,7 +30,7 @@ npm run dev:site
    - `Photo URL` (url)
    - `Story` (long text)
    - `Status` (single select: `Pending`, `Approved`, `Rejected`)
-4. Create a view named `Approved` filtered to `Status` is `Approved`.
+4. Create a view, filtered to `Status`.
 5. Create a Personal Access Token in Airtable:
    - Scopes: `data.records:read`, `data.records:write`
    - Base access: your new base
