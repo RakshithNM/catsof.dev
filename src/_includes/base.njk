@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if title %}{{ title }} | {% endif %}Cats of Developers</title>
+    <meta name="description" content="A gallery of cats owned by developers.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="bg-layer" aria-hidden="true">
+      <span class="bg-orb orb-1"></span>
+      <span class="bg-orb orb-2"></span>
+      <span class="bg-orb orb-3"></span>
+      <span class="bg-paw paw-1"></span>
+      <span class="bg-paw paw-2"></span>
+      <span class="bg-paw paw-3"></span>
+      <span class="bg-paw paw-4"></span>
+      <span class="bg-paw paw-5"></span>
+    </div>
+    <header class="site-header">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>cats<span>of.dev</span></span>
+      </a>
+      <nav class="site-nav">
+        <a href="/">Cats</a>
+        <a href="/submit/">Submit</a>
+      </nav>
+    </header>
+    <main class="site-main">
+      {{ content | safe }}
+    </main>
+    <footer class="site-footer">
+      <p>
+        Developed by
+        <a href="https://www.linkedin.com/in/rakshithbellare/" target="_blank" rel="noreferrer">Rakshith Bellare</a>,
+        using
+        <a href="https://www.11ty.dev/" target="_blank" rel="noreferrer">Eleventy</a>,
+        hosted on
+        <a href="https://www.netlify.com/" target="_blank" rel="noreferrer">Netlify</a>.
+      </p>
+    </footer>
+  </body>
+</html>

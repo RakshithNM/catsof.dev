@@ -1,0 +1,34 @@
+---
+layout: base.njk
+title: Cats of Developers
+---
+<section class="hero">
+  <p class="eyebrow">The keyboard-cat hall of fame</p>
+  <h1>Cats of Developers</h1>
+  <p class="hero-copy">Open source paws. Keyboard naps. Production purrs.</p>
+  <a class="button" href="/submit/">Submit your cat</a>
+</section>
+
+{% if cats and cats.length %}
+  <section class="cards">
+    {% for cat in cats %}
+      <article class="card">
+        <img src="{{ cat.photoUrl }}" alt="{{ cat.name }} the cat" loading="lazy">
+        <div class="card-body">
+          <h2>{{ cat.name }}</h2>
+          <p>{% if cat.story %}{{ cat.story }}{% else %}No story yet.{% endif %}</p>
+          <p class="meta">
+            Human:
+            {% if cat.developerUrl %}
+              <a href="{{ cat.developerUrl }}" target="_blank" rel="noreferrer">{{ cat.human }}</a>
+            {% else %}
+              {{ cat.human }}
+            {% endif %}
+          </p>
+        </div>
+      </article>
+    {% endfor %}
+  </section>
+{% else %}
+  <p class="empty">No approved cats yet. Be the first to submit one.</p>
+{% endif %}

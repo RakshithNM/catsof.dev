@@ -1,0 +1,47 @@
+---
+layout: base.njk
+title: Submit a Cat
+---
+<section class="hero">
+  <p class="eyebrow">Add a new keyboard companion</p>
+  <h1>Submit your cat</h1>
+  <p>Every submission starts as Pending until you approve it in Airtable.</p>
+</section>
+
+<form class="submit-form" method="post" action="/api/submit" enctype="multipart/form-data">
+  <label>
+    Cat name
+    <input type="text" name="catName" required>
+  </label>
+
+  <label>
+    Your name
+    <input type="text" name="humanName" required>
+  </label>
+
+  <label>
+    Developer URL (GitHub, portfolio, etc.)
+    <input type="url" name="devUrl" placeholder="https://">
+  </label>
+
+  <label>
+    Upload photo (recommended)
+    <input type="file" name="photoFile" accept="image/jpeg,image/png,image/webp,image/gif,image/avif">
+  </label>
+
+  <label>
+    Or image URL
+    <input type="url" name="photoUrl" placeholder="https://example.com/cat.jpg">
+  </label>
+
+  <p>Provide at least one image input. We re-host every image on Cloudinary before saving.</p>
+
+  <label>
+    Cat story
+    <textarea name="story" rows="4" placeholder="Favorite editor? Weirdest keyboard habit?"></textarea>
+  </label>
+
+  <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off">
+
+  <button class="button" type="submit">Send to Airtable</button>
+</form>

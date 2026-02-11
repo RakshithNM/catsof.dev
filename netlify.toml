@@ -1,0 +1,9 @@
+[build]
+command = "npm run build"
+publish = "_site"
+functions = "netlify/functions"
+
+[[redirects]]
+from = "/api/submit"
+to = "/.netlify/functions/submit-cat"
+status = 200
